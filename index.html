@@ -370,4 +370,280 @@
 
   .search-btn:hover {
     background: var(--gold);
-    color: var
+    color: var(--bg);
+  }
+
+  @media (max-width: 600px) {
+    .search-bar {
+      flex-direction: column;
+    }
+    .search-btn {
+      height: 44px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-deco">
+    <div class="header-line"></div>
+    <div class="header-emblem">✦</div>
+    <div class="header-line right"></div>
+  </div>
+  <h1>第14帝國</h1>
+  <div class="subtitle">セリフアーカイブ</div>
+</header>
+
+<div class="search-bar">
+  <input
+    type="text"
+    id="searchInput"
+    class="search-input"
+    placeholder="セリフ・キャラ名・出典で検索"
+  />
+  <button class="search-btn" onclick="runSearch()">
+    検索
+  </button>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-label">— キャラクターで絞り込む —</div>
+  <div class="filter-scroll" id="filterScroll">
+    <button class="filter-btn active" data-chara="all">すべて</button>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="card">
+    <div class="card-inner">
+      <div class="quote-mark">"</div>
+      <div class="serifu-text" id="serifuText"></div>
+      <div class="serifu-meta" id="serifuMeta">
+        <div class="meta-chara" id="metaChara"></div>
+        <div class="meta-source" id="metaSource"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="btn-area">
+  <button class="btn-main" onclick="showRandom()">セリフを引く</button>
+</div>
+
+<div class="counter" id="counter"></div>
+
+<footer>非公式アーカイブ ✦ 第14帝國</footer>
+
+<script>
+const rawData = `これは借しだ。大きな借しだからな。敵と味方に分かれることになっても、生きていればまた会うこともできよう。
+（春木亮太朗大佐-vol.28 新作だよおっかさん -）
+
+よくぞ、あの戦火の中を…。
+（秋山祐少佐-vol.20 3年B組楠本先生-）
+
+現在敵は北門に持ちうる全ての兵力にて展開中。その数１０万に対し我が方は城内に5千。かかる総攻撃に対し城門を固く閉ざし、兵力の被害を最小限に抑えたとしても、一時間以内にこの城は落城いたします。
+（春木亮太朗大佐-Vol.11 元帥のミッキーマウス -）
+
+捕まったら逃げればいいんです。おとなしく捕まってる人間は犯罪者です。
+（楠本先生-vol.20 ３年B組楠本先生-）
+
+私の命令は・・・柊生元帥の命令と心得よ・・・！
+（加納友緒中佐-vol.15 忍者でござる-）
+
+きしめんパイ、うなぎパイ、なごやん、小倉&ネオマーガリン
+（藤原是親少佐-Vol.11 元帥のミッキーマウス -）
+
+君たち軍人は死ぬのも仕事のうちかもしれないが、帝國臣民のことを思えば軽々しく死んでよい存在ではなかろう！
+（パン屋のPちゃん-vol.16 お魚になった元帥-）
+
+柊生元帥の夢を見ていた…
+（定光寺輝信中将-Vol.11 元帥のミッキーマウス -）
+
+しかし、どうか帝國のことをお考え下さい。
+（加納友緒中佐-vol.25 となりの元帥-）
+
+時は民主制に移行している。
+だから逆をいくまでだ。
+（楠本柊生-vol.17のび太の第14帝國-）
+
+この私でも予想できたことを、柊生元帥が見過ごすことが有り得ようか。
+（定光寺輝信中将-vol.6 ○〇のいない日-）
+
+おはようか。「よい朝」だ。
+（楠本柊生帝國元帥-vol.10 元帥UFOにのる-）
+
+悪いが、お前の役目はもう終わったんだ。
+（春木亮太朗大佐-vol.16 お魚になった元帥-）
+
+８時４６分です。
+（じょうこうじくん５5号-vol.23 元帥の中日×巨人戦-）
+
+貴官ら一旦出撃するからには、敵地が焦土と化すまで戦い抜くんだ！
+（定光寺輝信中将-Vol.19 元帥のドンとやってみよう-）
+
+そうか、そうであったな。供に行くか
+（草薙護大佐-vol.9 元帥ハリウッドに行く-）
+
+リッターのみなさんこんばんは！
+（定光寺輝信中将-オールナイト１４-）
+
+臣民諸君…もし仮になどという言葉は我が帝國には存在しない。しかしもし仮にという状況は日々無数に存在している。その中を常に我々は諸君らとともに歩み続けているのだ。
+（楠本柊生帝國元帥-vol.16 お魚になった元帥-）`;
+
+// パース
+function parseData(raw) {
+  const blocks = raw.trim().split(/\n\n+/);
+  const result = [];
+  for (const block of blocks) {
+    const lines = block.trim().split('\n');
+    const metaLine = lines.find(l => l.startsWith('（'));
+    const textLines = lines.filter(l => !l.startsWith('（'));
+    if (!metaLine || textLines.length === 0) continue;
+    const text = textLines.join('\n').trim();
+    // （キャラ-出典）をパース
+    const inner = metaLine.replace(/^（/, '').replace(/）$/, '').trim();
+    const dashIdx = inner.indexOf('-');
+    let chara = inner, source = '';
+    if (dashIdx !== -1) {
+      chara = inner.slice(0, dashIdx).trim();
+      source = inner.slice(dashIdx + 1).trim();
+    }
+    result.push({ text, chara, source });
+  }
+  return result;
+}
+
+let allSerifu = parseData(rawData);
+let filtered = [...allSerifu];
+let currentFilter = 'all';
+let current = null;
+
+// キャラ一覧生成
+function buildFilters() {
+  const scroll = document.getElementById('filterScroll');
+  const charas = [...new Set(allSerifu.map(s => s.chara))].sort();
+  charas.forEach(chara => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    btn.dataset.chara = chara;
+    btn.textContent = chara;
+    btn.onclick = () => setFilter(chara);
+    scroll.appendChild(btn);
+  });
+}
+
+function setFilter(chara) {
+  currentFilter = chara;
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.chara === chara);
+  });
+  runSearch();
+}
+
+function updateCounter() {
+  document.getElementById('counter').textContent = `${filtered.length} 件のセリフ`;
+}
+
+function normalizeText(str) {
+  return str
+    .toLowerCase()
+    .normalize('NFKC') // 全角半角統一
+    .replace(/\s+/g, '') // 空白除去
+    .replace(/[ァ-ヶ]/g, s =>
+      String.fromCharCode(s.charCodeAt(0) - 0x60)
+    ); // カタカナ→ひらがな
+}
+
+function runSearch() {
+  const keyword = normalizeText(
+    document.getElementById('searchInput').value.trim()
+  );
+
+  let base = currentFilter === 'all'
+    ? [...allSerifu]
+    : allSerifu.filter(s => s.chara === currentFilter);
+
+  if (!keyword) {
+    filtered = base;
+  } else {
+    const words = keyword.split(/\s+/).filter(Boolean);
+
+    filtered = base
+      .map(s => {
+        const text = normalizeText(s.text);
+        const chara = normalizeText(s.chara);
+        const source = normalizeText(s.source);
+
+        let score = 0;
+
+        words.forEach(w => {
+          if (text.includes(w)) score += 3;
+          if (chara.includes(w)) score += 5;
+          if (source.includes(w)) score += 2;
+        });
+
+        return { ...s, score };
+      })
+      .filter(s => s.score > 0)
+      .sort((a, b) => b.score - a.score);
+  }
+
+  updateCounter();
+
+  if (filtered.length > 0) {
+    showSerifu(filtered[0]);
+  } else {
+    document.getElementById('serifuText').textContent =
+      '該当するセリフがありません';
+    document.getElementById('metaChara').textContent = '';
+    document.getElementById('metaSource').textContent = '';
+  }
+}
+
+function showSerifu(data) {
+  current = data;
+
+  const textEl = document.getElementById('serifuText');
+  const metaEl = document.getElementById('serifuMeta');
+
+  textEl.classList.remove('visible');
+  metaEl.classList.remove('visible');
+
+  setTimeout(() => {
+    textEl.textContent = data.text;
+    document.getElementById('metaChara').textContent = data.chara;
+    document.getElementById('metaSource').textContent = data.source;
+
+    requestAnimationFrame(() => {
+      textEl.classList.add('visible');
+      metaEl.classList.add('visible');
+    });
+  }, 150);
+}
+
+function showRandom() {
+  if (filtered.length === 0) return;
+
+  let candidates = filtered.filter(s => s !== current);
+  if (candidates.length === 0) candidates = filtered;
+
+  const picked =
+    candidates[Math.floor(Math.random() * candidates.length)];
+
+  showSerifu(picked);
+}
+
+document.getElementById('searchInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    runSearch();
+  }
+});
+
+// 初期化
+buildFilters();
+updateCounter();
+showSerifu(filtered[0]);
+</script>
+</body>
+</html>
