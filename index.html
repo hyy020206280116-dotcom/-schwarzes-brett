@@ -31,53 +31,20 @@
     overflow-x: hidden;
   }
 
-  /* 背景テクスチャ */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: 
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(200,169,110,0.015) 2px,
-        rgba(200,169,110,0.015) 4px
-      );
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(200,169,110,0.015) 2px, rgba(200,169,110,0.015) 4px);
     pointer-events: none;
     z-index: 0;
   }
 
-  header {
-    width: 100%;
-    text-align: center;
-    padding: 3rem 1rem 2rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .header-deco {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .header-line {
-    height: 1px;
-    width: 80px;
-    background: linear-gradient(90deg, transparent, var(--gold));
-  }
-  .header-line.right {
-    background: linear-gradient(90deg, var(--gold), transparent);
-  }
-
-  .header-emblem {
-    font-size: 1.2rem;
-    color: var(--gold);
-    letter-spacing: 0.3em;
-  }
+  header { width: 100%; text-align: center; padding: 3rem 1rem 2rem; position: relative; z-index: 1; }
+  .header-deco { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem; }
+  .header-line { height: 1px; width: 80px; background: linear-gradient(90deg, transparent, var(--gold)); }
+  .header-line.right { background: linear-gradient(90deg, var(--gold), transparent); }
+  .header-emblem { font-size: 1.2rem; color: var(--gold); letter-spacing: 0.3em; }
 
   h1 {
     font-family: 'Noto Serif JP', serif;
@@ -89,298 +56,86 @@
     margin-bottom: 0.3rem;
   }
 
-  .subtitle {
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-  }
+  .subtitle { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.4em; text-transform: uppercase; }
 
-  /* フィルター */
-  .filter-bar {
-    width: 100%;
-    max-width: 700px;
-    padding: 0 1.5rem;
-    margin-bottom: 2rem;
-    position: relative;
-    z-index: 1;
-  }
+  .filter-bar, .search-bar, .stage, .btn-area, .counter { width: 100%; max-width: 700px; padding: 0 1.5rem; margin-bottom: 2rem; position: relative; z-index: 1; }
 
-  .filter-label {
-    font-size: 0.7rem;
-    color: var(--text-dim);
-    letter-spacing: 0.3em;
-    margin-bottom: 0.6rem;
-  }
+  .filter-label { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.3em; margin-bottom: 0.6rem; }
 
-  .filter-scroll {
-    display: flex;
-    gap: 0.5rem;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-    scrollbar-width: none;
-  }
+  .filter-scroll { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; scrollbar-width: none; }
   .filter-scroll::-webkit-scrollbar { display: none; }
 
   .filter-btn {
-    flex-shrink: 0;
-    padding: 0.35rem 0.9rem;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-dim);
-    font-family: 'Shippori Mincho', serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-    transition: all 0.25s;
-    white-space: nowrap;
-    border-radius: 2px;
+    flex-shrink: 0; padding: 0.35rem 0.9rem; border: 1px solid var(--border); background: transparent;
+    color: var(--text-dim); font-family: 'Shippori Mincho', serif; font-size: 0.75rem;
+    letter-spacing: 0.1em; cursor: pointer; transition: all 0.25s; white-space: nowrap; border-radius: 2px;
   }
 
-  .filter-btn:hover {
-    border-color: var(--gold-dim);
-    color: var(--gold-light);
-  }
-
-  .filter-btn.active {
-    border-color: var(--gold);
-    color: var(--gold-light);
-    background: rgba(200,169,110,0.08);
-  }
-
-  /* メインカード */
-  .stage {
-    width: 100%;
-    max-width: 700px;
-    padding: 0 1.5rem;
-    margin-bottom: 2.5rem;
-    position: relative;
-    z-index: 1;
-  }
+  .filter-btn:hover { border-color: var(--gold-dim); color: var(--gold-light); }
+  .filter-btn.active { border-color: var(--gold); color: var(--gold-light); background: rgba(200,169,110,0.08); }
 
   .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 3rem 2.5rem 2.5rem;
-    position: relative;
-    min-height: 260px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    background: var(--surface); border: 1px solid var(--border); padding: 3rem 2.5rem 2.5rem;
+    position: relative; min-height: 260px; display: flex; flex-direction: column; justify-content: center;
   }
 
   .card::before, .card::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-color: var(--gold);
-    border-style: solid;
+    content: ''; position: absolute; width: 20px; height: 20px; border-color: var(--gold); border-style: solid;
   }
   .card::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
   .card::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
 
-  .card-inner {
-    position: relative;
-  }
-
-  .card-inner::before, .card-inner::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-color: var(--gold);
-    border-style: solid;
-  }
-  .card-inner::before { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
-  .card-inner::after  { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
-
   .serifu-text {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(1.05rem, 3vw, 1.35rem);
-    font-weight: 400;
-    line-height: 2;
-    color: var(--text);
-    letter-spacing: 0.05em;
-    margin-bottom: 2rem;
-    opacity: 0;
-    transform: translateY(8px);
+    font-family: 'Noto Serif JP', serif; font-size: clamp(1.05rem, 3vw, 1.35rem);
+    font-weight: 400; line-height: 2; color: var(--text); letter-spacing: 0.05em;
+    margin-bottom: 2rem; opacity: 0; transform: translateY(8px);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
 
-  .serifu-text.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .serifu-text.visible { opacity: 1; transform: translateY(0); }
 
-  .serifu-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s;
-  }
+  .serifu-meta { display: flex; flex-direction: column; gap: 0.3rem; opacity: 0; transform: translateY(6px); transition: all 0.5s ease 0.15s; }
+  .serifu-meta.visible { opacity: 1; transform: translateY(0); }
 
-  .serifu-meta.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .meta-chara {
-    font-size: 0.85rem;
-    color: var(--gold);
-    letter-spacing: 0.15em;
-    font-weight: 700;
-  }
-
-  .meta-source {
-    font-size: 0.72rem;
-    color: var(--text-dim);
-    letter-spacing: 0.15em;
-  }
+  .meta-chara { font-size: 0.85rem; color: var(--gold); letter-spacing: 0.15em; font-weight: 700; }
+  .meta-source { font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.15em; }
 
   .quote-mark {
-    position: absolute;
-    top: -3rem;
-    left: -1rem;
-    font-size: 8rem;
-    color: rgba(200,169,110,0.04);
-    font-family: serif;
-    z-index: 0;
-    pointer-events: none;
-    user-select: none;
+    position: absolute; top: -3rem; left: -1rem; font-size: 8rem;
+    color: rgba(200,169,110,0.04); font-family: serif; z-index: 0;
+    pointer-events: none; user-select: none;
   }
 
-  .serifu-text,
-  .serifu-meta {
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ボタン */
-  .btn-area {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-    padding: 0 1.5rem;
-  }
-
+  .btn-area { display: flex; gap: 1rem; justify-content: center; margin-bottom: 3rem; flex-wrap: wrap; }
   .btn-main {
-    padding: 0.9rem 2.5rem;
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold-light);
-    font-family: 'Noto Serif JP', serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0.3em;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+    padding: 0.9rem 2.5rem; background: transparent; border: 1px solid var(--gold);
+    color: var(--gold-light); font-family: 'Noto Serif JP', serif; font-size: 0.9rem;
+    font-weight: 700; letter-spacing: 0.3em; cursor: pointer; position: relative; overflow: hidden;
     transition: color 0.3s;
   }
-
   .btn-main::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--gold);
-    transform: translateX(-101%);
-    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-    z-index: -1;
+    content: ''; position: absolute; inset: 0; background: var(--gold);
+    transform: translateX(-101%); transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); z-index: -1;
   }
-
   .btn-main:hover::before { transform: translateX(0); }
   .btn-main:hover { color: var(--bg); }
 
-  .btn-main:active { transform: scale(0.98); }
-
-  /* カウンター */
-  .counter {
-    text-align: center;
-    font-size: 0.68rem;
-    color: var(--text-dim);
-    letter-spacing: 0.3em;
-    margin-bottom: 4rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* フッター装飾 */
-  footer {
-    margin-top: auto;
-    padding: 1.5rem;
-    text-align: center;
-    font-size: 0.65rem;
-    color: var(--text-dim);
-    letter-spacing: 0.2em;
-    position: relative;
-    z-index: 1;
-    opacity: 0.5;
-  }
-
-  /* 検索バー */
-  .search-bar {
-    width: 100%;
-    max-width: 700px;
-    padding: 0 1.5rem;
-    margin-bottom: 2rem;
-    display: flex;
-    gap: 0.7rem;
-    position: relative;
-    z-index: 1;
-  }
-
+  .search-bar { display: flex; gap: 0.7rem; }
   .search-input {
-    flex: 1;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 0.8rem 1rem;
-    font-family: 'Shippori Mincho', serif;
-    font-size: 0.85rem;
-    outline: none;
-    transition: border-color 0.25s;
+    flex: 1; background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    padding: 0.8rem 1rem; font-family: 'Shippori Mincho', serif; font-size: 0.85rem; outline: none;
   }
-
-  .search-input:focus {
-    border-color: var(--gold);
-  }
-
-  .search-input::placeholder {
-    color: var(--text-dim);
-  }
+  .search-input:focus { border-color: var(--gold); }
 
   .search-btn {
-    padding: 0 1.4rem;
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold-light);
-    font-family: 'Noto Serif JP', serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    cursor: pointer;
-    transition: all 0.25s;
+    padding: 0 1.4rem; background: transparent; border: 1px solid var(--gold);
+    color: var(--gold-light); font-family: 'Noto Serif JP', serif; font-size: 0.8rem;
+    letter-spacing: 0.15em; cursor: pointer;
   }
+  .search-btn:hover { background: var(--gold); color: var(--bg); }
 
-  .search-btn:hover {
-    background: var(--gold);
-    color: var(--bg);
-  }
-
-  @media (max-width: 600px) {
-    .search-bar {
-      flex-direction: column;
-    }
-    .search-btn {
-      height: 44px;
-    }
-  }
+  .counter { text-align: center; font-size: 0.68rem; color: var(--text-dim); letter-spacing: 0.3em; margin-bottom: 4rem; }
+  footer { margin-top: auto; padding: 1.5rem; text-align: center; font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.2em; opacity: 0.5; }
 </style>
 </head>
 <body>
@@ -396,15 +151,8 @@
 </header>
 
 <div class="search-bar">
-  <input
-    type="text"
-    id="searchInput"
-    class="search-input"
-    placeholder="セリフ・キャラ名・出典で検索"
-  />
-  <button class="search-btn" onclick="runSearch()">
-    検索
-  </button>
+  <input type="text" id="searchInput" class="search-input" placeholder="セリフ・キャラ名・出典で検索" />
+  <button class="search-btn" onclick="runSearch()">検索</button>
 </div>
 
 <div class="filter-bar">
@@ -463,8 +211,7 @@ const rawData = `これは借しだ。大きな借しだからな。敵と味方
 しかし、どうか帝國のことをお考え下さい。
 （加納友緒中佐-vol.25 となりの元帥-）
 
-時は民主制に移行している。
-だから逆をいくまでだ。
+時は民主制に移行している。だから逆をいくまでだ。
 （楠本柊生-vol.17のび太の第14帝國-）
 
 この私でも予想できたことを、柊生元帥が見過ごすことが有り得ようか。
@@ -489,9 +236,52 @@ const rawData = `これは借しだ。大きな借しだからな。敵と味方
 （定光寺輝信中将-オールナイト１４-）
 
 臣民諸君…もし仮になどという言葉は我が帝國には存在しない。しかしもし仮にという状況は日々無数に存在している。その中を常に我々は諸君らとともに歩み続けているのだ。
-（楠本柊生帝國元帥-vol.16 お魚になった元帥-）`;
+（楠本柊生帝國元帥-vol.16 お魚になった元帥-）
 
-// パース
+その10年間でこの男が起こした奇跡に比べれば、今が夜であろうと、太陽を出すぐらい構うまい！聞いているのか！！
+この男を生き返らせろ…生き返らせろ！生き返らせろ！！！！
+（定光寺輝信中将-vol.15 忍者でござる-）
+
+ささしまライブ駅と掛けまして、高級美容液と解きます。その心は、どちらも一駅（一液）でいいでしょう。くすっちです！
+（楠本柊生帝國元帥-ライヒスリッターExpo〜お魚になった忍者でござる・忍者編〜-）
+
+春木大佐は汗っかきです！！
+（風間利之少佐-vol.16 お魚になった元帥-）
+
+それがどうしたんですか！！！
+（定光寺輝信中将-vol.8 元帥とドラえもん-）
+
+ガビーン…
+（有馬竜ノ介大尉-vol.16 お魚になった元帥-）
+
+柊生元帥！…柊生元帥がそう仰られるなら、地獄の底までお供いたします。
+（定光寺輝信中将-vol.25 となりの元帥-）
+
+定光寺中将！あまりにも犠牲が大き過ぎました…。
+（春木亮太朗大佐-Vol.21 8時だョ！全員元帥！ -）
+
+我々は軍人だ。貴族でなければ官僚でもない。力のみでここまでのし上がってきた。私の言うことを不服と思えば、その力をもって私を倒すがよかろう！
+（楠本柊生帝國元帥-vol.10 元帥UFOにのる-）
+
+貴官らは各公國の最高司令官、昔であれば各国の王に他ならん。
+（楠本柊生帝國元帥-vol.25 となりの元帥-）
+
+馬鹿か貴官は！
+（定光寺輝信中将-vol.16 お魚になった元帥-）
+
+さぁ～なにして遊ぶ？
+（あきお兄ちゃん-vol.25 となりの元帥-）
+
+すごいだろう。兄ちゃんが見つけたんだぞ。
+（はるお兄ちゃん-vol.25 となりの元帥-）
+
+これぞ、血の団結だ！
+（楠本柊生帝國元帥-vol.８ 元帥とドラえもん -）
+
+うわ～。これすごいよ兄ちゃん。
+（天ちん-vol.25 となりの元帥-）`;
+
+// （以降は元のJavaScriptコードと同じ）
 function parseData(raw) {
   const blocks = raw.trim().split(/\n\n+/);
   const result = [];
@@ -501,7 +291,6 @@ function parseData(raw) {
     const textLines = lines.filter(l => !l.startsWith('（'));
     if (!metaLine || textLines.length === 0) continue;
     const text = textLines.join('\n').trim();
-    // （キャラ-出典）をパース
     const inner = metaLine.replace(/^（/, '').replace(/）$/, '').trim();
     const dashIdx = inner.indexOf('-');
     let chara = inner, source = '';
@@ -519,7 +308,6 @@ let filtered = [...allSerifu];
 let currentFilter = 'all';
 let current = null;
 
-// キャラ一覧生成
 function buildFilters() {
   const scroll = document.getElementById('filterScroll');
   const charas = [...new Set(allSerifu.map(s => s.chara))].sort();
@@ -535,9 +323,7 @@ function buildFilters() {
 
 function setFilter(chara) {
   currentFilter = chara;
-  document.querySelectorAll('.filter-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.chara === chara);
-  });
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.chara === chara));
   runSearch();
 }
 
@@ -546,56 +332,35 @@ function updateCounter() {
 }
 
 function normalizeText(str) {
-  return str
-    .toLowerCase()
-    .normalize('NFKC') // 全角半角統一
-    .replace(/\s+/g, '') // 空白除去
-    .replace(/[ァ-ヶ]/g, s =>
-      String.fromCharCode(s.charCodeAt(0) - 0x60)
-    ); // カタカナ→ひらがな
+  return str.toLowerCase().normalize('NFKC').replace(/\s+/g, '').replace(/[ァ-ヶ]/g, s => String.fromCharCode(s.charCodeAt(0) - 0x60));
 }
 
 function runSearch() {
-  const keyword = normalizeText(
-    document.getElementById('searchInput').value.trim()
-  );
-
-  let base = currentFilter === 'all'
-    ? [...allSerifu]
-    : allSerifu.filter(s => s.chara === currentFilter);
+  const keyword = normalizeText(document.getElementById('searchInput').value.trim());
+  let base = currentFilter === 'all' ? [...allSerifu] : allSerifu.filter(s => s.chara === currentFilter);
 
   if (!keyword) {
     filtered = base;
   } else {
     const words = keyword.split(/\s+/).filter(Boolean);
-
-    filtered = base
-      .map(s => {
-        const text = normalizeText(s.text);
-        const chara = normalizeText(s.chara);
-        const source = normalizeText(s.source);
-
-        let score = 0;
-
-        words.forEach(w => {
-          if (text.includes(w)) score += 3;
-          if (chara.includes(w)) score += 5;
-          if (source.includes(w)) score += 2;
-        });
-
-        return { ...s, score };
-      })
-      .filter(s => s.score > 0)
-      .sort((a, b) => b.score - a.score);
+    filtered = base.map(s => {
+      const text = normalizeText(s.text);
+      const chara = normalizeText(s.chara);
+      const source = normalizeText(s.source);
+      let score = 0;
+      words.forEach(w => {
+        if (text.includes(w)) score += 3;
+        if (chara.includes(w)) score += 5;
+        if (source.includes(w)) score += 2;
+      });
+      return { ...s, score };
+    }).filter(s => s.score > 0).sort((a, b) => b.score - a.score);
   }
 
   updateCounter();
-
-  if (filtered.length > 0) {
-    showSerifu(filtered[0]);
-  } else {
-    document.getElementById('serifuText').textContent =
-      '該当するセリフがありません';
+  if (filtered.length > 0) showSerifu(filtered[0]);
+  else {
+    document.getElementById('serifuText').textContent = '該当するセリフがありません';
     document.getElementById('metaChara').textContent = '';
     document.getElementById('metaSource').textContent = '';
   }
@@ -603,18 +368,14 @@ function runSearch() {
 
 function showSerifu(data) {
   current = data;
-
   const textEl = document.getElementById('serifuText');
   const metaEl = document.getElementById('serifuMeta');
-
   textEl.classList.remove('visible');
   metaEl.classList.remove('visible');
-
   setTimeout(() => {
     textEl.textContent = data.text;
     document.getElementById('metaChara').textContent = data.chara;
     document.getElementById('metaSource').textContent = data.source;
-
     requestAnimationFrame(() => {
       textEl.classList.add('visible');
       metaEl.classList.add('visible');
@@ -624,23 +385,14 @@ function showSerifu(data) {
 
 function showRandom() {
   if (filtered.length === 0) return;
-
   let candidates = filtered.filter(s => s !== current);
   if (candidates.length === 0) candidates = filtered;
-
-  const picked =
-    candidates[Math.floor(Math.random() * candidates.length)];
-
+  const picked = candidates[Math.floor(Math.random() * candidates.length)];
   showSerifu(picked);
 }
 
-document.getElementById('searchInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter') {
-    runSearch();
-  }
-});
+document.getElementById('searchInput').addEventListener('keydown', e => { if (e.key === 'Enter') runSearch(); });
 
-// 初期化
 buildFilters();
 updateCounter();
 showSerifu(filtered[0]);
