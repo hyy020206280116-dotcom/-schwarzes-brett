@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -17,9 +18,7 @@
     --red: #8b2020;
     --border: #3a2e22;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     background-color: var(--bg);
     color: var(--text);
@@ -30,7 +29,6 @@
     align-items: center;
     overflow-x: hidden;
   }
-
   body::before {
     content: '';
     position: fixed;
@@ -39,13 +37,11 @@
     pointer-events: none;
     z-index: 0;
   }
-
   header { width: 100%; text-align: center; padding: 3rem 1rem 2rem; position: relative; z-index: 1; }
   .header-deco { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem; }
   .header-line { height: 1px; width: 80px; background: linear-gradient(90deg, transparent, var(--gold)); }
   .header-line.right { background: linear-gradient(90deg, var(--gold), transparent); }
   .header-emblem { font-size: 1.2rem; color: var(--gold); letter-spacing: 0.3em; }
-
   h1 {
     font-family: 'Noto Serif JP', serif;
     font-size: clamp(1.6rem, 5vw, 2.8rem);
@@ -55,57 +51,43 @@
     text-shadow: 0 0 40px rgba(200,169,110,0.3);
     margin-bottom: 0.3rem;
   }
-
   .subtitle { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.4em; text-transform: uppercase; }
-
   .filter-bar, .search-bar, .stage, .btn-area, .counter { width: 100%; max-width: 700px; padding: 0 1.5rem; margin-bottom: 2rem; position: relative; z-index: 1; }
-
   .filter-label { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.3em; margin-bottom: 0.6rem; }
-
   .filter-scroll { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; scrollbar-width: none; }
   .filter-scroll::-webkit-scrollbar { display: none; }
-
   .filter-btn {
     flex-shrink: 0; padding: 0.35rem 0.9rem; border: 1px solid var(--border); background: transparent;
     color: var(--text-dim); font-family: 'Shippori Mincho', serif; font-size: 0.75rem;
     letter-spacing: 0.1em; cursor: pointer; transition: all 0.25s; white-space: nowrap; border-radius: 2px;
   }
-
   .filter-btn:hover { border-color: var(--gold-dim); color: var(--gold-light); }
   .filter-btn.active { border-color: var(--gold); color: var(--gold-light); background: rgba(200,169,110,0.08); }
-
   .card {
     background: var(--surface); border: 1px solid var(--border); padding: 3rem 2.5rem 2.5rem;
     position: relative; min-height: 260px; display: flex; flex-direction: column; justify-content: center;
   }
-
   .card::before, .card::after {
     content: ''; position: absolute; width: 20px; height: 20px; border-color: var(--gold); border-style: solid;
   }
   .card::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
-  .card::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
-
+  .card::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
   .serifu-text {
     font-family: 'Noto Serif JP', serif; font-size: clamp(1.05rem, 3vw, 1.35rem);
     font-weight: 400; line-height: 2; color: var(--text); letter-spacing: 0.05em;
     margin-bottom: 2rem; opacity: 0; transform: translateY(8px);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
-
   .serifu-text.visible { opacity: 1; transform: translateY(0); }
-
   .serifu-meta { display: flex; flex-direction: column; gap: 0.3rem; opacity: 0; transform: translateY(6px); transition: all 0.5s ease 0.15s; }
   .serifu-meta.visible { opacity: 1; transform: translateY(0); }
-
   .meta-chara { font-size: 0.85rem; color: var(--gold); letter-spacing: 0.15em; font-weight: 700; }
   .meta-source { font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.15em; }
-
   .quote-mark {
     position: absolute; top: -3rem; left: -1rem; font-size: 8rem;
     color: rgba(200,169,110,0.04); font-family: serif; z-index: 0;
     pointer-events: none; user-select: none;
   }
-
   .btn-area { display: flex; gap: 1rem; justify-content: center; margin-bottom: 3rem; flex-wrap: wrap; }
   .btn-main {
     padding: 0.9rem 2.5rem; background: transparent; border: 1px solid var(--gold);
@@ -119,27 +101,23 @@
   }
   .btn-main:hover::before { transform: translateX(0); }
   .btn-main:hover { color: var(--bg); }
-
   .search-bar { display: flex; gap: 0.7rem; }
   .search-input {
     flex: 1; background: var(--surface); border: 1px solid var(--border); color: var(--text);
     padding: 0.8rem 1rem; font-family: 'Shippori Mincho', serif; font-size: 0.85rem; outline: none;
   }
   .search-input:focus { border-color: var(--gold); }
-
   .search-btn {
     padding: 0 1.4rem; background: transparent; border: 1px solid var(--gold);
     color: var(--gold-light); font-family: 'Noto Serif JP', serif; font-size: 0.8rem;
     letter-spacing: 0.15em; cursor: pointer;
   }
   .search-btn:hover { background: var(--gold); color: var(--bg); }
-
   .counter { text-align: center; font-size: 0.68rem; color: var(--text-dim); letter-spacing: 0.3em; margin-bottom: 4rem; }
   footer { margin-top: auto; padding: 1.5rem; text-align: center; font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.2em; opacity: 0.5; }
 </style>
 </head>
 <body>
-
 <header>
   <div class="header-deco">
     <div class="header-line"></div>
@@ -149,19 +127,16 @@
   <h1>第14帝國</h1>
   <div class="subtitle">非公式セリフアーカイブ</div>
 </header>
-
 <div class="search-bar">
   <input type="text" id="searchInput" class="search-input" placeholder="セリフ・キャラ名・出典で検索" />
   <button class="search-btn" onclick="runSearch()">検索</button>
 </div>
-
 <div class="filter-bar">
   <div class="filter-label">— キャラクターで絞り込む —</div>
   <div class="filter-scroll" id="filterScroll">
     <button class="filter-btn active" data-chara="all">すべて</button>
   </div>
 </div>
-
 <div class="stage">
   <div class="card">
     <div class="card-inner">
@@ -174,114 +149,214 @@
     </div>
   </div>
 </div>
-
 <div class="btn-area">
   <button class="btn-main" onclick="showRandom()">セリフを引く</button>
   <button class="btn-main" onclick="shareOnX()" style="background:rgba(200,169,110,0.1);">（Xでシェア）</button>
 </div>
-
 <div class="counter" id="counter"></div>
-
 <footer>非公式アーカイブ ✦ 第14帝國</footer>
-
 <script>
 const rawData = `これは借しだ。大きな借しだからな。敵と味方に分かれることになっても、生きていればまた会うこともできよう。
 （春木亮太朗大佐-vol.28 新作だよおっかさん -）
-
 よくぞ、あの戦火の中を…。
 （秋山祐少佐-vol.20 3年B組楠本先生-）
-
 現在敵は北門に持ちうる全ての兵力にて展開中。その数１０万に対し我が方は城内に5千.かかる総攻撃に対し城門を固く閉ざし、兵力の被害を最小限に抑えたとしても、一時間以内にこの城は落城いたします。
 （春木亮太朗大佐-Vol.11 元帥のミッキーマウス -）
-
 捕まったら逃げればいいんです。おとなしく捕まってる人間は犯罪者です。
 （楠本先生-vol.20 ３年B組楠本先生-）
-
 私の命令は・・・柊生元帥の命令と心得よ・・・！
 （加納友緒中佐-vol.15 忍者でござる-）
-
 きしめんパイ、うなぎパイ、なごやん、小倉&ネオマーガリン
 （藤原是親少佐-Vol.11 元帥のミッキーマウス -）
-
 君たち軍人は死ぬのも仕事のうちかもしれないが、帝國臣民のことを思えば軽々しく死んでよい存在ではなかろう！
 （パン屋のPちゃん-vol.16 お魚になった元帥-）
-
 柊生元帥の夢を見ていた…
 （定光寺輝信中将-Vol.11 元帥のミッキーマウス -）
-
 しかし、どうか帝國のことをお考え下さい。
 （加納友緒中佐-vol.25 となりの元帥-）
-
 時は民主制に移行している。だから逆をいくまでだ。
 （楠本柊生-vol.17のび太の第14帝國-）
-
 この私でも予想できたことを、柊生元帥が見過ごすことが有り得ようか。
 （定光寺輝信中将-vol.6 ○〇のいない日-）
-
 おはようか。「よい朝」だ。
 （楠本柊生帝國元帥-vol.10 元帥UFOにのる-）
-
 悪いが、お前の役目的はもう終わったんだ。
 （春木亮太朗大佐-vol.16 お魚になった元帥-）
-
 ８時４６分です。
 （じょうこうじくん５5号-vol.23 元帥の中日×巨人戦-）
-
 貴官ら一旦出撃するからには、敵地が焦土と化すまで戦い抜くんだ！
 （定光寺輝信中将-Vol.19 元帥のドンとやってみよう-）
-
 そうか、そうであったな。供に行くか
 （草薙護大佐-vol.9 元帥ハリウッドに行く-）
-
 リッターのみなさんこんばんは！
 （定光寺輝信中将-オールナイト１４-）
-
 臣民諸君…もし仮になどという言葉は我が帝國には存在しない。しかしもし仮にという状況は日々無数に存在している。その中を常に我々は諸君らとともに歩み続けているのだ。
 （楠本柊生帝國元帥-vol.16 お魚になった元帥-）
-
 その10年間でこの男が起こした奇跡に比べれば、今が夜であろうと、太陽を出すぐらい構うまい！聞いているのか！！
 この男を生き返らせろ…生き返らせろ！生き返らせろ！！！！
 （定光寺輝信中将-vol.15 忍者でござる-）
-
 ささしまライブ駅と掛けまして、高級美容液と解きます。その心は、どちらも一駅（一液）でいいでしょう。くすっちです！
 （楠本柊生帝國元帥-ライヒスリッターExpo〜お魚になった忍者でござる・忍者編〜-）
-
 春木大佐は汗っかきです！！
 （風間利之少佐-vol.16 お魚になった元帥-）
-
 それがどうしたんですか！！！
 （定光寺輝信中将-vol.8 元帥とドラえもん-）
-
 ガビーン…
 （有馬竜ノ介大尉-vol.16 お魚になった元帥-）
-
 柊生元帥！…柊生元帥がそう仰られるなら、地獄の底までお供いたします。
 （定光寺輝信中将-vol.25 となりの元帥-）
-
 定光寺中将！あまりにも犠牲が大き過ぎました…。
 （春木亮太朗大佐-Vol.21 8時だョ！全員元帥！ -）
-
 我々は軍人だ。貴族でなければ官僚でもない。力のみでここまでのし上がってきた。私の言うことを不服と思えば、その力をもって私を倒すがよかろう！
 （楠本柊生帝國元帥-vol.10 元帥UFOにのる-）
-
 貴官らは各公國の最高司令官、昔であれば各国の王に他ならん。
 （楠本柊生帝國元帥-vol.25 となりの元帥-）
-
 馬鹿か貴官は！
 （定光寺輝信中将-vol.16 お魚になった元帥-）
-
 さぁ～なにして遊ぶ？
 （あきお兄ちゃん-vol.25 となりの元帥-）
-
 すごいだろう。兄ちゃんが見つけたんだぞ。
 （はるお兄ちゃん-vol.25 となりの元帥-）
-
 これぞ、血の団結だ！
 （楠本柊生帝國元帥-vol.８ 元帥とドラえもん -）
-
 うわ～。これすごいよ兄ちゃん。
 （天ちん-vol.25 となりの元帥-）`;
 
+const newQuotes = `諸君らのおかげで腐敗した民主政治は終わりを告げ、新たに人間味あふれる帝國政治の幕が切って落とされたのだ。
+諸君、礼を言うぞ。
+意志の勝利だ。意志の勝利だ……
+意志の勝利だ！！
+（楠本柊生帝國元帥-vol.5 そして誰かがいなくなる-）
+諸君！いかなることがあろうと意志を持ち続けなければならない。鉄の意志を！
+（楠本柊生帝國元帥-vol.5 そして誰かがいなくなる-）
+よく聞くがいい。夢には良しき悪しきに関係なく、必要な者のみが存在を許される。貴官がここに存在できるのは皇帝陛下に必要を認められたからなのだ。必要でなくなれば貴官は滅ぶ。さぁ選ばれし者として新たな帝國の光を浴びるがよい。
+（楠本柊生帝國元帥-vol.5 そして誰かがいなくなる-）
+この第14帝國は皇帝陛下の夢なのだ。そこに存在する我々も帝國全土10億の臣民もすべては夢の一部にすぎんのだ。夢にひたるがいい。夢にもて遊ばれるがいい。すべてはそこから始まるのだから。
+（楠本柊生帝國元帥-vol.5 そして誰かがいなくなる-）
+幻創論とは唯我論から派生したものが、更に発展して完成された形体です。
+（草薙護大佐-vol.5 そして誰かがいなくなる-）
+エスターリヒ・クーデターは一度経験した過去のことだし、ニホンは物質世界だったからな。今回のように精神世界の中の別の世界へ行くとなると我らが第14帝國のありあわせで一から世界を創らねばならんのだ。
+（楠本柊生帝國元帥-vol.5 そして誰かがいなくなる-）
+すると私達が現実世界であると思っているこの世界も単なる虚構かもしれないのでしょうか！
+（定光寺輝信中将-vol.5 そして誰かがいなくなる-）
+虚構ではない。精神世界だ。物質世界は物で成り立ち、精神世界は皆の意志で成り立つ。どうした、定光寺中将らしくもない。幻創論の基礎の基礎だ。
+（楠本柊生帝國元帥-vol.5 そして誰かがいなくなる-）
+いえ！立花大将！戻りましょう！柊生元帥の元へ！
+（定光寺輝信中将-vol.20 ３年B組楠本先生-）
+周りの事ばかり気にしていてはいけません。そんなことを考えていたら暴走族は街を走れなくなってしまいます。みんな制限速度なんか守っていないんです。
+（楠本先生-vol.20 ３年B組楠本先生-）
+わがままでいいんです。人間は所詮自分勝手な生き物なんです。いいですか、先生は長沢くんではありません。先生は先生、長沢くんは長沢くん、所詮他人なんです。
+（楠本先生-vol.20 ３年B組楠本先生-）
+はい、よく見てください。同じ人と人でも囲いがあるだけでもう会えないんです。みんな会いたがらないんです。友達だったことも忘れます。卒業名簿にも載らないんです。
+（楠本先生-vol.20 ３年B組楠本先生-）
+警察に言ったりしないでください。こういう時に我々教師がしっかりしなくてどうするんですか。
+（楠本先生-vol.20 ３年B組楠本先生-）
+捕まったら逃げればいいんです。おとなしく捕まってる人間は犯罪者です。
+（楠本先生-vol.20 ３年B組楠本先生-）
+はい、呼ばれました、出て参りました、ジャジャジャジャーンでございます。先生は壺の中でずっと待っていたので少し疲れました。アイアムベリータイヤード…私はとても上手にタイヤを転がすことができます。
+（楠本先生-vol.20 ３年B組楠本先生-）
+これは義務教育なんです。先生には生徒を殴る義務があるんです。これを校内暴力といいます。これは体罰ではありません。殴りたいから殴るんです。先生だって人間なんです。人間なんてラララララ…なんです。笑うんじゃありません。
+（楠本先生-vol.20 ３年B組楠本先生-）
+先生が知りたいのは、あなたの趣味は何なのか、スリーサイズはいくつなのか、小さい頃にピアノを習っていたかどうかです。
+（楠本先生-vol.20 ３年B組楠本先生-）
+言いたいことがあるなら、はっきり言いなさい！先生は何を言われても平気です。それは言われたら言い返すからです。
+（楠本先生-vol.20 ３年B組楠本先生-）
+これでは柊生元帥も嘆かれるはずだ。
+（立花薫大将-vol.20 ３年B組楠本先生-）
+馬鹿！それこそ思うツボだろうが！ここで殺せば処刑の理由を与えるようなもんだろう！
+（春木亮太朗大佐-vol.20 ３年B組楠本先生-）
+絶対いる！
+どっかから登場してくる筈だ！
+（定光寺輝信中将-Vol.11 元帥のミッキーマウス -）
+お皿が1枚…
+お皿が2枚…
+…帰る……。
+（有馬幽霊-Vol.21 8時だョ！全員元帥！ -）
+民主主義です。
+（秋山くん-Vol.17 のび太の第14帝國 -）
+えー　僕じゃないよ。信じてよ。
+（長沢くん-Vol.17 のび太の第14帝國 -）
+僕も長沢くんが怪しいと思います。
+（有馬くん-Vol.17 のび太の第14帝國 -）
+よし、では死なないように頑張るから。
+貴官らもせいぜいがんばれ。
+（楠本柊生帝國元帥-Vol.11 元帥のミッキーマウス -）
+人はたくさんいましたが、ネズミは見かけませんでした。
+（春木亮太朗大佐-Vol.11 元帥のミッキーマウス -）
+万博か……こっちでその話してもわかるのか？
+（楠本柊生帝國元帥-Vol.11 元帥のミッキーマウス -）
+そうか。我々も國である以上参加できるのか。
+（楠本柊生帝國元帥-Vol.11 元帥のミッキーマウス -）
+では参加したとして我々、何見せればいいんだ
+（楠本柊生帝國元帥-Vol.11 元帥のミッキーマウス -）
+きしめんパイ、うなぎパイ、なごやん、小倉&ネオマーガリン
+（藤原是親少佐-Vol.11 元帥のミッキーマウス -）
+しかし、どうか帝國のことをお考え下さい。
+（加納友緒中佐-vol.25 となりの元帥-）
+臣民諸君…もし仮になどという言葉は我が帝國には存在しない。しかしもし仮にという状況は日々無数に存在している。その中を常に我々は諸君らとともに歩み続けているのだ。
+（楠本柊生帝國元帥-vol.16 お魚になった元帥-）
+木を殺す、木殺！
+（木殺-ライヒスリッターExpo〜お魚になった忍者でござる・忍者編〜）
+森を憎む、森憎！
+（森憎-ライヒスリッターExpo〜お魚になった忍者でござる・忍者編〜）
+私はライヒス・リッターであることを誇りに思っている。最期までライヒス・リッターでありたい。
+（定光寺輝信中将-Vol.11 元帥のミッキーマウス -）
+その10年間でこの男が起こした奇跡に比べれば、今が夜であろうと、太陽を出すぐらい構うまい！聞いているのか！！
+この男を生き返らせろ…生き返らせろ！生き返らせろ！！！！
+（定光寺輝信中将-vol.15 忍者でござる-）
+帝國元帥としての10年間は無駄ではなかった…。…定光寺中将、しばらく会えなくなる。しかし、また会うであろう。いや、貴官とは逢わねばならぬ。いずれまた、きっと…どこか、別の場所で…。
+…………………それまで、壮健であれよ。
+（楠本柊生帝國元帥-vol.15 忍者でござる-）
+……何故この吹雪は鳴り止まぬ！何故一瞬の晴れ間をもつくろうとせぬ！たった10年間だ…。 たった10年間でライヒス・リッターを終わらせるつもりか…！
+（定光寺輝信中将-vol.15 忍者でござる-）
+何故…殺した…ここまで帝國の為に尽くしてきた男を何故殺した…自分の事を顧みず、ただひたすら帝國に全生涯を捧げた男を、何故今帝國が殺すのか！！
+（定光寺輝信中将-vol.15 忍者でござる-）
+小官が柊生元帥に初めてお逢いした時のこと憶えてますか…あの時も確か雪山が…
+（定光寺輝信中将-vol.15 忍者でござる -）
+いや…♡
+（有馬竜之介大尉-vol.15 忍者でござる -）
+この山を下りたらじっくり教えてやる。何年かかってでもちゃんと説明してやろう
+（楠本柊生帝國元帥-vol.15 忍者でござる -）
+その時々、時として誰かと出会い、そして時として別れを経験する。時は無限の一瞬を含み、光り輝く一瞬は、その無限すらも超越し、そして、時を刻むことを止めた時に、我々の永遠の一瞬を遺す。
+（楠本柊生帝國元帥-Vol.21 8時だョ！全員元帥！ -）
+柊生元帥、今まで騙していて申し訳ございません。オイラは東の村の山に住む、タヌキのタヌ吉でございます。
+（タヌ吉-Vol.21 8時だョ！全員元帥！ -）
+定光寺中将……。第14帝國を頼む…。
+（楠本柊生帝國元帥-Vol.21 8時だョ！全員元帥！ -）
+私が今までに貴官との約束を破ったことがあったか？…それにこの国の為にせねばならぬことは山のようにある。定光寺中将にもそう伝えておけ。
+（楠本柊生帝國元帥-Vol.21 8時だョ！全員元帥！ -）
+すべてを無にか……貴官ら、決して口外するのではないぞ…第14帝國の影は闇とともに潰える…
+（定光寺輝信中将-Vol.21 8時だョ！全員元帥！ -）
+定光寺中将！あまりにも犠牲が大き過ぎました…。
+（春木亮太朗大佐-Vol.21 8時だョ！全員元帥！ -）
+成果とはなんですか。村を全滅に追いやっただけではありませんか。
+（春木亮太朗大佐-Vol.21 8時だョ！全員元帥！ -）
+最期にかようなものしか贈ることができず、申し訳なく思う。貴官にはまだ教えねばならぬことが多かったのだが…。
+（楠本柊生帝國元帥-Vol.21 8時だョ！全員元帥！ -）
+最後の任務にふさわしいものをもっていてもらいたいのだ。
+（楠本柊生帝國元帥-Vol.21 8時だョ！全員元帥！ -）
+貴官らの御陰で、この元帥府も随分と居心地が良い。息抜きの必要も感じぬ程にな。
+（楠本柊生帝國元帥-Vol.21 8時だョ！全員元帥！ -）
+では寝ている間、どんな夢を見よう。
+（楠本柊生帝國元帥-Vol.11 元帥のミッキーマウス -）
+分析ですか？……え～、北門より立花大将１０万、南門より天崎少将５万、両名がここに到着するのは数秒後かと…
+（春木亮太朗大佐-Vol.11 元帥のミッキーマウス -）
+現在敵は北門に持ちうる全ての兵力にて展開中。その数１０万に対し我が方は城内に5千。かかる総攻撃に対し城門を固く閉ざし、兵力の被害を最小限に抑えたとしても、一時間以内にこの城は落城いたします。
+（春木亮太朗大佐-Vol.11 元帥のミッキーマウス -）
+かような結果になることは、戦う前から予測はついておりましたが…
+（春木亮太朗大佐-Vol.11 元帥のミッキーマウス -）
+そりゃ１５万対５人だからな。覚悟もするだろうが。
+（楠本柊生帝國元帥-Vol.11 元帥のミッキーマウス -）
+当方全滅は元より覚悟。
+（春木亮太朗大佐-Vol.11 元帥のミッキーマウス -）
+恐れながら５人の方でございます。
+（春木亮太朗大佐-Vol.11 元帥のミッキーマウス -）`;
+
+const rawDataUpdated = rawData + '\n\n' + newQuotes;
+const allSerifu = parseData(rawDataUpdated);
+let filtered = [...allSerifu];
+let currentFilter = 'all';
+let current = null;
 function parseData(raw) {
   const blocks = raw.trim().split(/\n\n+/);
   const result = [];
@@ -302,12 +377,6 @@ function parseData(raw) {
   }
   return result;
 }
-
-let allSerifu = parseData(rawData);
-let filtered = [...allSerifu];
-let currentFilter = 'all';
-let current = null;
-
 function buildFilters() {
   const scroll = document.getElementById('filterScroll');
   const charas = [...new Set(allSerifu.map(s => s.chara))].sort();
@@ -320,25 +389,20 @@ function buildFilters() {
     scroll.appendChild(btn);
   });
 }
-
 function setFilter(chara) {
   currentFilter = chara;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.chara === chara));
   runSearch();
 }
-
 function updateCounter() {
   document.getElementById('counter').textContent = `${filtered.length} 件のセリフ`;
 }
-
 function normalizeText(str) {
   return str.toLowerCase().normalize('NFKC').replace(/\s+/g, '').replace(/[ァ-ヶ]/g, s => String.fromCharCode(s.charCodeAt(0) - 0x60));
 }
-
 function runSearch() {
   const keyword = normalizeText(document.getElementById('searchInput').value.trim());
   let base = currentFilter === 'all' ? [...allSerifu] : allSerifu.filter(s => s.chara === currentFilter);
-
   if (!keyword) {
     filtered = base;
   } else {
@@ -356,7 +420,6 @@ function runSearch() {
       return { ...s, score };
     }).filter(s => s.score > 0).sort((a, b) => b.score - a.score);
   }
-
   updateCounter();
   if (filtered.length > 0) showSerifu(filtered[0]);
   else {
@@ -365,7 +428,6 @@ function runSearch() {
     document.getElementById('metaSource').textContent = '';
   }
 }
-
 function showSerifu(data) {
   current = data;
   const textEl = document.getElementById('serifuText');
@@ -382,7 +444,6 @@ function showSerifu(data) {
     });
   }, 150);
 }
-
 function showRandom() {
   if (filtered.length === 0) return;
   let candidates = filtered.filter(s => s !== current);
@@ -390,28 +451,18 @@ function showRandom() {
   const picked = candidates[Math.floor(Math.random() * candidates.length)];
   showSerifu(picked);
 }
-
-// Xでシェアする機能
 function shareOnX() {
   if (!current) return alert('セリフを表示してからお試しください');
-
-  // テキストを作成
   const sourceText = current.source ? ` (${current.source})` : '';
   const tweetText = encodeURIComponent(
     `"${current.text}"\n\n` +
     `— ${current.chara}${sourceText}\n\n` +
     `第14帝國 非公式セリフアーカイブ`
   );
-
-  // サイトのURL
   const url = window.location.href;
-  
-  // Xの投稿画面を開く
   window.open(`https://x.com/intent/tweet?text=${tweetText}&url=${encodeURIComponent(url)}`, '_blank');
 }
-
 document.getElementById('searchInput').addEventListener('keydown', e => { if (e.key === 'Enter') runSearch(); });
-
 buildFilters();
 updateCounter();
 showSerifu(filtered[0]);
